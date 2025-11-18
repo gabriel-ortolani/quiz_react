@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Quiz Minecraft (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pequeno aplicativo de quiz sobre Minecraft criado com Create React App.  
+O projeto exibe perguntas à esquerda e uma tabela de melhores pontuações (leaderboard) à direita — as pontuações são salvas no `localStorage`.
 
-## Available Scripts
+## Principais características
+- 20 perguntas sobre Minecraft com múltipla escolha.
+- Interface responsiva: perguntas à esquerda, leaderboard fixa à direita (cai abaixo em telas pequenas).
+- Salvar nome e pontuação ao finalizar o quiz; top 10 pontuações são mantidas no `localStorage`.
+- Componentes principais: `Quizminecraft` (quiz) e `Leaderboard`.
 
-In the project directory, you can run:
+## Pré-requisitos
+- Node.js >= 14
+- npm ou yarn
 
-### `npm start`
+## Instalação
+1. Clone o repositório
+   - git clone <url-do-repo>
+2. Instale dependências
+   - npm install
+   - ou
+   - yarn
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Scripts úteis
+- `npm start` — inicia o modo de desenvolvimento (http://localhost:3000)
+- `npm run build` — gera build de produção em `build/`
+- `npm test` — executa testes (se houver)
+- `npm run eject` — expõe configurações do Create React App (irreversível)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Como usar / jogar
+1. Execute `npm start`.
+2. Responda as perguntas mostradas no painel esquerdo.
+3. Ao final, insira seu nome (máx. 10 caracteres) e clique em "Salvar Pontuação".
+4. A leaderboard à direita será atualizada automaticamente exibindo o Top 10.
 
-### `npm test`
+## Estrutura dos arquivos
+- Localização de arquivos importantes:
+  - `src/components/Quizminecraft/Quizminecraft.jsx` — lógica do quiz e formulário de submissão.
+  - `src/components/Leaderboard/Leaderboard.jsx` — mostra as pontuações lidas do `localStorage`.
+  - `src/App.js` — componente principal que conecta `Quizminecraft` e `Leaderboard`. Recebe `onScoreSubmit` para persistência.
+  - `src/App.css` — estilos globais e layout (quiz à esquerda, leaderboard à direita).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Comportamento do leaderboard
+- As pontuações são salvas em `localStorage` sob a chave `minecraftHighScores` como array de entradas { id, name, score }.
+- O App mantém as responsabilidades de ordenar e limitar ao Top 10.
 
-### `npm run build`
+## Customização rápida
+- Para alterar perguntas, edite o array `questions` em `Quizminecraft.jsx`.
+- Para ajustar layout/cores, edite `src/App.css`.
+- Para alterar lógica de persistência (por exemplo salvar em backend), modifique `handleScoreSubmit` em `App.js` para enviar ao servidor.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contribuindo
+- Abra issues para bugs/sugestões.
+- Para PRs: crie branch, faça alterações, comummente rode `npm start` para testar localmente, e submeta Pull Request com descrição clara.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Licença
+- Adicione a licença desejada ou mantenha para uso pessoal/educacional.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Observações
+- Este README é um guia rápido; o código contém comentários que ajudam na compreensão das partes mais importantes do quiz e do leaderboard.
