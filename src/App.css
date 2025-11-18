@@ -1,38 +1,193 @@
-.App {
-  text-align: center;
+/* Exemplo de estilos em um arquivo CSS separado */
+
+/* Layout principal: quiz à esquerda e leaderboard à direita */
+.main-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Área do quiz (lado esquerdo) */
+.quiz-area {
+  flex: 1;
+  max-width: 900px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Ajuste do container do quiz para ocupar todo o espaço da área */
+.quiz-app {
+  background-color: #252d4a;
+  width: 100%;
+  min-height: 360px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+/* Melhora visual da seção de perguntas */
+.question-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.question-count {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #c7c7c7;
+}
+
+.question-text {
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+}
+
+/* Grid para respostas: duas colunas em telas maiores, 1 coluna em telas pequenas */
+.answer-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .answer-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.answer-section button {
+  width: 100%;
+  min-height: 52px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #71b340;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform .08s ease, background-color .12s ease;
+}
+
+.answer-section button:hover {
+  background-color: #5a9134;
+  transform: translateY(-2px);
+}
+
+/* Pontuação / tela final */
+.score-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 18px;
+  color: #fff;
+  text-align: left;
+}
+
+/* Área da leaderboard (lado direito) */
+.leaderboard-area {
+  width: 320px;
+  min-width: 260px;
+  display: flex;
+  align-items: flex-start;
+  /* garante que a área direita não estique verticalmente mais que necessário */
+}
+
+/* Estilos da leaderboard */
+.leaderboard {
+  background: linear-gradient(180deg, #2b3356 0%, #22283f 100%);
+  border-radius: 12px;
+  padding: 14px;
+  width: 100%;
+  color: #fff;
+  box-shadow: 6px 6px 18px rgba(0,0,0,0.5);
+  /* Mantém a leaderboard visível enquanto rola a página, sem ocupar toda a tela */
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
+}
+
+.leaderboard h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #ffd700;
+}
+
+.no-scores {
+  color: #c7c7c7;
+}
+
+/* Lista de pontuações: rolável dentro da caixa da leaderboard */
+.high-scores-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.high-scores-list li {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Destaque para a pontuação recente */
+.highlight-score {
+  background: rgba(255,215,0,0.12);
+  border: 1px solid rgba(255,215,0,0.18);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Class used previously no arquivo: score-entry */
+.score-entry{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+/* Botões e inputs do quiz (pequenos ajustes visuais) */
+.score-submission-form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #444c69;
+  margin-bottom: 8px;
+  background: #161826;
+  color: #fff;
+}
+
+.score-submission-form button,
+.restart-button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #71b340;
+  color: #fff;
+}
+
+.score-submission-form button:hover,
+.restart-button:hover {
+  background: #5a9134;
 }
