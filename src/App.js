@@ -1,6 +1,7 @@
 // App.js (Exemplo de componente principal que usa o Quiz e a Leaderboard)
 
 import React, { useState, useEffect } from 'react';
+import Background from './components/assets/Minecraft.jpg';
 import Quizminecraft from './components/Quizminecraft/Quizminecraft';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import './App.css'; // Para os estilos de layout e quiz
@@ -27,7 +28,7 @@ function App() {
     };
 
     return (
-        <div className='main-layout'>
+        <div className='main-layout' style={{ backgroundImage: `url(${Background})`, backgroundSize: 'cover', height: '92vh' }}>
             {/* O Quiz Ocupa o Lado Esquerdo */}
             <div className="quiz-area">
                 <Quizminecraft onScoreSubmit={handleScoreSubmit} />

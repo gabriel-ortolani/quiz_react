@@ -1,62 +1,90 @@
-/* Exemplo de estilos em um arquivo CSS separado */
+/* 1. IMPORTAÇÃO DA FONTE (Estilo Pixel) */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* Layout principal: quiz à esquerda e leaderboard à direita */
+/* Configuração Global de Fonte */
+* {
+  font-family: 'VT323', monospace; /* Fonte pixelada */
+}
+
+/* Layout principal */
 .main-layout {
   display: flex;
-  gap: 20px;
+  gap: 60px;
   align-items: flex-start;
-  padding: 20px;
+  padding: 40px 20px;
   justify-content: center;
+  /* Fundo de terra opcional para a página inteira */
+  background-color: #181310; 
+  background-image: repeating-linear-gradient(45deg, #241c18 25%, transparent 25%, transparent 75%, #241c18 75%, #241c18), repeating-linear-gradient(45deg, #241c18 25%, #181310 25%, #181310 75%, #241c18 75%, #241c18);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
 }
 
 /* Área do quiz (lado esquerdo) */
 .quiz-area {
   flex: 1;
-  max-width: 900px;
+  max-width: 800px;
 }
 
-/* Ajuste do container do quiz para ocupar todo o espaço da área */
+/* --- ESTILO DE GUI DO MINECRAFT (Janela Cinza) --- */
 .quiz-app {
-  background-color: #252d4a;
+  /* Cor de fundo clássica dos menus do Minecraft */
+  background-color: #C6C6C6;
   width: 100%;
   min-height: 360px;
-  border-radius: 15px;
+  
+  /* SEM BORDAS ARREDONDADAS */
+  border-radius: 0px;
+  
   padding: 20px;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  
+  /* Borda estilo 3D (Bevel) */
+  border: 4px solid;
+  border-color: #FFFFFF #555555 #555555 #FFFFFF; /* Branco topo/esq, Cinza escuro baixo/dir */
+  outline: 2px solid #000000; /* Contorno preto externo */
+  
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5); /* Sombra dura (sem blur) */
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
+  color: #3f3f3f; /* Texto cinza escuro padrão */
 }
 
 /* Melhora visual da seção de perguntas */
 .question-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   width: 100%;
 }
 
 .question-count {
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #c7c7c7;
+  margin-bottom: 4px;
+  font-size: 20px; /* Aumentei pois a fonte pixelada é menor */
+  color: #404040;
+  text-transform: uppercase;
 }
 
 .question-text {
-  font-size: 20px;
-  margin-bottom: 6px;
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  font-size: 28px; /* Fonte maior para leitura pixelada */
+  margin-bottom: 10px;
+  color: #ffffff;
+  padding: 15px;
+  
+  /* Estilo "Slot de Item" ou placa escura */
+  background-color: #8B8B8B;
+  border: 2px solid;
+  border-color: #373737 #FFF #FFF #373737; /* Invertido para parecer "afundado" */
+  border-radius: 0;
+  text-shadow: 2px 2px #000; /* Sombra no texto para legibilidade */
 }
 
-/* Grid para respostas: duas colunas em telas maiores, 1 coluna em telas pequenas */
+/* Grid para respostas */
 .answer-section {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 @media (max-width: 640px) {
@@ -65,24 +93,41 @@
   }
 }
 
+/* BOTÕES ESTILO MINECRAFT */
 .answer-section button {
   width: 100%;
   min-height: 52px;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #71b340;
-  border-radius: 8px;
+  font-size: 24px;
+  color: #e0e0e0;
+  text-shadow: 2px 2px #222;
+  
+  /* Textura de botão de pedra */
+  background-color: #787878; 
+  
+  /* Borda 3D do botão */
+  border: 2px solid;
+  border-color: #FFF #555 #555 #FFF;
+  border-radius: 0; /* Quadrado */
+  
   padding: 10px 12px;
-  border: none;
   cursor: pointer;
   text-align: left;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  transition: transform .08s ease, background-color .12s ease;
+  box-shadow: none;
+  position: relative;
+  transition: none; /* Minecraft não tem transições suaves */
 }
 
+/* Efeito Hover (Passar o mouse) */
 .answer-section button:hover {
-  background-color: #5a9134;
-  transform: translateY(-2px);
+  background-color: #8c9eff; /* O azulado quando passa o mouse no botão do menu */
+  color: #ffffa0; /* Texto fica amarelado */
+  border-color: #FFF #5f6eab #5f6eab #FFF;
+}
+
+/* Efeito de Clique (Active) */
+.answer-section button:active {
+  border-color: #555 #FFF #FFF #555; /* Inverte a borda para parecer pressionado */
+  transform: translateY(2px);
 }
 
 /* Pontuação / tela final */
@@ -91,8 +136,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-  font-size: 18px;
-  color: #fff;
+  font-size: 24px;
+  color: #333;
   text-align: left;
 }
 
@@ -102,18 +147,24 @@
   min-width: 260px;
   display: flex;
   align-items: flex-start;
-  /* garante que a área direita não estique verticalmente mais que necessário */
 }
 
 /* Estilos da leaderboard */
 .leaderboard {
-  background: linear-gradient(180deg, #2b3356 0%, #22283f 100%);
-  border-radius: 12px;
+  /* Fundo de Terra/Obsidian ou apenas GUI Escura */
+  background-color: #121212;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png'); /* Textura opcional */
+  
+  border: 4px solid;
+  border-color: #5900a8 #210045 #210045 #5900a8; /* Borda roxa estilo Obsidian/Portal */
+  outline: 2px solid #000;
+  
+  border-radius: 0;
   padding: 14px;
   width: 100%;
   color: #fff;
-  box-shadow: 6px 6px 18px rgba(0,0,0,0.5);
-  /* Mantém a leaderboard visível enquanto rola a página, sem ocupar toda a tela */
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+  
   position: sticky;
   top: 20px;
   max-height: calc(100vh - 120px);
@@ -121,22 +172,42 @@
 }
 
 .leaderboard h3 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  color: #ffd700;
+  margin: 0 0 15px 0;
+  font-size: 26px;
+  color: #FFFF55; /* Amarelo Minecraft */
+  text-shadow: 2px 2px #3f3f00;
+  text-align: center;
+  border-bottom: 2px solid #555;
+  padding-bottom: 10px;
 }
 
 .no-scores {
-  color: #c7c7c7;
+  color: #aaa;
+  font-style: italic;
 }
 
-/* Lista de pontuações: rolável dentro da caixa da leaderboard */
+/* Lista de pontuações */
 .high-scores-list {
   list-style: none;
   margin: 0;
   padding: 0;
   max-height: calc(100vh - 200px);
   overflow-y: auto;
+  
+  /* Scrollbar personalizada estilo Minecraft */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #333;
+}
+
+.high-scores-list::-webkit-scrollbar {
+  width: 8px;
+}
+.high-scores-list::-webkit-scrollbar-track {
+  background: #333; 
+}
+.high-scores-list::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border: 1px solid #fff;
 }
 
 .high-scores-list li {
@@ -144,21 +215,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 10px;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  background: rgba(255,255,255,0.03);
+  border-radius: 0;
+  margin-bottom: 4px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid #555;
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
+  font-family: 'VT323', monospace;
 }
 
 /* Destaque para a pontuação recente */
 .highlight-score {
-  background: rgba(255,215,0,0.12);
-  border: 1px solid rgba(255,215,0,0.18);
+  background: rgba(0, 128, 0, 0.4); /* Verde transparente */
+  border: 2px solid #00FF00;
+  color: #00FF00;
+  text-shadow: 1px 1px #000;
 }
 
-/* Class used previously no arquivo: score-entry */
-.score-entry{
+.score-entry {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -166,28 +240,36 @@
   color: #fff;
 }
 
-/* Botões e inputs do quiz (pequenos ajustes visuais) */
+/* Inputs e Botões de submit */
 .score-submission-form input[type="text"] {
   width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #444c69;
+  padding: 10px;
+  border-radius: 0;
+  border: 2px solid #555;
   margin-bottom: 8px;
-  background: #161826;
+  background: #000;
   color: #fff;
+  font-family: 'VT323', monospace;
+  font-size: 20px;
 }
 
 .score-submission-form button,
 .restart-button {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: none;
+  padding: 10px 12px;
+  border-radius: 0;
+  border: 2px solid;
+  border-color: #FFF #555 #555 #FFF;
   cursor: pointer;
-  background: #71b340;
+  
+  /* Botão Verde do Minecraft */
+  background: #48792c; 
   color: #fff;
+  text-shadow: 2px 2px #222;
+  font-size: 20px;
+  width: 100%;
 }
 
 .score-submission-form button:hover,
 .restart-button:hover {
-  background: #5a9134;
+  background: #63a53c;
 }
