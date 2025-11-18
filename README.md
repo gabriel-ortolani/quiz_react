@@ -60,7 +60,7 @@ O projeto exibe perguntas à esquerda e uma tabela de melhores pontuações (lea
 - Este README é um guia rápido; o código contém comentários que ajudam na compreensão das partes mais importantes do quiz e do leaderboard.
 
 ## Contribuidores
-Gabriel Ortolani
-Gustavo da Silva Rodrigues
-Miguel Mernick
+Gabriel Ortolani<br>
+Gustavo da Silva Rodrigues<br>
+Miguel Mernick<br>
 Pedro da Silva Rodrigues
